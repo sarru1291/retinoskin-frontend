@@ -1,0 +1,13 @@
+.Header{
+  margin: 0px;
+  padding: 0px;
+  border:2px solid black;
+  height: 80px;
+  /* float: left; */
+  display: flex;
+  width: 100%;
+  background-color: #ffd8b1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
