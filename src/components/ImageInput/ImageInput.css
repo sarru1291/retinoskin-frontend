@@ -1,5 +1,13 @@
 .ImageInput {
   border: 1px solid red;
-  height: 100px;
+  height: 200px;
   width: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.ImageInputSize{
+  height: 200px;
+  cursor: pointer;
+  width: auto;
+  margin-left: 130px;
 }

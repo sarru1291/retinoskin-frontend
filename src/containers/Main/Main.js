@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import classes from './Main.css';
 import RetinoSkin from "../../components/UI/MainContent/RetinoSkin";
-import retino from './retino.png';
-import skin from './skin.png';
+import retino from '../../assets/retino.png';
+import skin from '../../assets/skin.png';
 class Main extends Component{
   
   render(){

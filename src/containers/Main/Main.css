@@ -1,6 +1,8 @@
 .Main{
   /* background-color: blueviolet; */
-  height: 1000px;
+  height: auto;
   display: flex;
   width: auto;
+  /* padding: 10px; */
+  /* border: 1px solid red; */
 }

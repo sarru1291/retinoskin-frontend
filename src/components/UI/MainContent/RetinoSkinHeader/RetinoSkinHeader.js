@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import classes from './RetinoSkinHeader.css';
 import ImageInput from '../../../ImageInput/ImageInput';
+import Button from '../../../Tools/Buttons/Button';
 class RetinoSkinHeader extends Component{
   state={
-    toggleStatus:true
+    toggleStatus:false
   }
  
   showImageInput=()=>this.setState({toggleStatus:true});
@@ -19,9 +20,10 @@ class RetinoSkinHeader extends Component{
     }
     return(
       <div>
-        <p className={classes.RetinoSkinHeader} onClick={this.contentHandler}> 
+        <p className={classes.RetinoSkinHeader} > 
         <img src={this.props.imageURL} alt="icon"></img>
         <span className={classes.headerName}>{this.props.headerName}</span>
+        <p className={classes.button} onClick={this.contentHandler}><Button/></p>
         </p>
         <div >
       {imageInput}

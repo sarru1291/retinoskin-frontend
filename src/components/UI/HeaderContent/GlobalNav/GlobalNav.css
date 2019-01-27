@@ -1,19 +1,24 @@
 .GlobalNav{
-  border: 1px solid saddlebrown;
+  /* border: 1px solid saddlebrown; */
   margin: 0 0 0 500px;
+  padding: 0px;
 }
 ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color:#e79292;
+  background-color:black;
+  color: white;
+  height: 80px;
 }
 li{
   float: left;
   text-align: center;
   padding: 30px;
+  height: 80px;
 }
 li:hover{
   background-color: white;
+  color: black;
 }
