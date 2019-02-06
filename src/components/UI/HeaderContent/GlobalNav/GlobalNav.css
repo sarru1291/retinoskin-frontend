@@ -1,24 +1,37 @@
 .GlobalNav{
-  /* border: 1px solid saddlebrown; */
-  margin: 0 0 0 500px;
-  padding: 0px;
+  position: absolute;
+  top:0;
+  left:700px;
+  width: auto;
 }
-ul{
+.GlobalNav ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
+  background-color: #009d95;
+  height: 80px;
   overflow: hidden;
-  background-color:black;
-  color: white;
-  height: 80px;
 }
-li{
-  float: left;
+.GlobalNav li{
+    float: left;
+}
+.GlobalNav li a{
+  /* height: 80px; */
+  display: block;
+  cursor: pointer;
+  color: #1d272e;
+  background-color: #009d95;
   text-align: center;
-  padding: 30px;
-  height: 80px;
+  text-decoration: none;
+  padding: 30px 16px;
 }
-li:hover{
-  background-color: white;
-  color: black;
+
+.GlobalNav li a:hover{
+  background-color: #1d272e;
+  color: white;
 }
+.GlobalNav li a:active{
+  color: #1d272e;
+  background-color: #009d95;
+}
+

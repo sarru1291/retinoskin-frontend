@@ -1,0 +1,25 @@
+.RetinoSkinHeader{
+  background-color: #1eb3aa;
+  color: #1d272e;
+  border: 2px solid #1d272e;
+  border-radius: 10px;
+  box-shadow: 2px 3px 3px;
+  height: 60px;
+  display: flex;
+}
+
+.image{
+  height: 50px;
+  width: 50px;
+  margin: 5px 10px 0 10px;
+}
+
+.headerName{
+  color: #1d272e;
+  font-size: 20px;
+  /* margin-right: 100px; */
+  /* padding-right: 150px; */
+}
+.button{
+  margin: 10px 0 0 150px;
+}

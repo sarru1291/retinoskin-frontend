@@ -1,13 +1,31 @@
 .ImageInput {
-  border: 1px solid red;
-  height: 200px;
+  border: 1px solid #1d272e;
+  height: 300px;
   width: auto;
-  margin-bottom: 10px;
-  padding: 5px;
+  margin:10px 0 10px;
+  background-color: #1eb3aa;
 }
-.ImageInputSize{
-  height: 200px;
+.ImageInput img{
+  height: 250px;
+  width: 250px;
   cursor: pointer;
-  width: auto;
-  margin-left: 130px;
+  margin: 0 0 0 25%;
+}
+.submitButton{
+  height: 46px;
+  width: 100%;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #1d272e;
+  color:#dbf3f1;
+  border: none;
+  font-family: paprikaRegular;
+}
+.submitButton:hover{
+  background-color: #dbf3f1;
+  color: #1d272e;
+}
+.submitButton:active{
+  background-color: #1d272e;
+  color:#dbf3f1;
 }

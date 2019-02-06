@@ -3,7 +3,7 @@ import  './Button.css';
 
 const Button=(props)=>(
   <div >
-    <button>Test</button>
+    <button>{props.value}</button>
   </div>
 );
 

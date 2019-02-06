@@ -1,6 +1,10 @@
+@font-face {
+  font-family: paprikaRegular;
+  src: url(./assets/fonts/paprika-regular.ttf);
+}
 body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
-  /* border: 1px solid red; */
+  font-family: paprikaRegular;
+
 }

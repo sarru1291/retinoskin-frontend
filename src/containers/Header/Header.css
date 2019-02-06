@@ -1,12 +1,10 @@
 .Header{
   margin: 0px;
   padding: 0px;
-  /* border:2px solid black; */
   height: 80px;
-  /* float: left; */
-  display: flex;
-  width: 100%;
-  background-color: #ffd8b1;
+  width: auto;
+  background-color: #1eb3aa;
+  color: #1d272e;
   position: sticky;
   top: 0;
   z-index: 1;

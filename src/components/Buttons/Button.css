@@ -1,0 +1,20 @@
+
+button{
+  border-radius: 4px;
+  width: 80px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #1d272e;
+  color:#dbf3f1;
+  border: none;
+  font-family: paprikaRegular;
+}
+button:hover{
+  background-color: #dbf3f1;
+  color: #1d272e;
+}
+button:active{
+  background-color: #1d272e;
+  color:#dbf3f1;
+}
