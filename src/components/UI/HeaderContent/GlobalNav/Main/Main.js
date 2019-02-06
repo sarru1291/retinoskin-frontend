@@ -3,6 +3,7 @@ import classes from './Main.css';
 import RetinoSkin from "./MainContent/RetinoSkin";
 import retino from '../../../../../assets/photos/retino.png';
 import skin from '../../../../../assets/photos/skin.png';
+// import Spinner from "../../../../Spinner/Spinner";
 
 class Main extends Component{
   state={
@@ -11,10 +12,7 @@ class Main extends Component{
     content:['slfjaslkfjalsfsalk;fjaklsfjaffasfasdfasfdsfa',
               'asfljaflksjadfasfafsafdasdfafasfasdfasdfaeeeeee']
   }
-  componentDidMount(){
-    console.log(this.props);
-    
-  }
+  
   render(){
     return(
       <div className={classes.Main}>
@@ -22,13 +20,15 @@ class Main extends Component{
           imageURL={skin}
           headerName={this.state.diseaseTitle[0]} 
           formSubmitted={this.state.formSubmittedHandler}
-          content={this.state.content[0]}/>
+          content={this.state.content[0]}
+          />
        <RetinoSkin 
           imageURL={retino}
           formSubmitted={this.state.formSubmittedHandler}
           headerName={this.state.diseaseTitle[1]}
-          content={this.state.content[1]}/>
-
+          content={this.state.content[1]}
+          />
+      {/* <Spinner/> */}
       </div>
     );
   }

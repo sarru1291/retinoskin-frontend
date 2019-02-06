@@ -3,9 +3,7 @@ import classes from './GlobalNav.css';
 import {NavLink} from 'react-router-dom';
 
 class GlobalNav extends Component{
-  componentDidMount(){
-    console.log(this.props);
-  }
+  
   render(){
 
     return (

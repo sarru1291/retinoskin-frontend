@@ -7,7 +7,8 @@ const RetinoSkin=(props)=>(
   <div className={classes.RetinoSkin}>
     <RetinoSkinHeader 
         imageURL={props.imageURL} 
-        headerName={props.headerName} />
+        headerName={props.headerName} 
+    />
     <RetinoSkinContent content={props.content}/>
   </div>
 );

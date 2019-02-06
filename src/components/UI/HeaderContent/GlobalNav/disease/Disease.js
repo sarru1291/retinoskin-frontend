@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Disease = (props) => {
-  return (
-    <div>
-      <p>Disease</p>
-    </div>
-  );
-};
+class Disease extends Component {
+  componentDidMount(){
+    console.log(this.props);
+    
+  }
+  render() {
+    return (
+      <div>
+        Disease
+      </div>
+    );
+  }
+}
 
 export default Disease;

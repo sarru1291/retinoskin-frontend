@@ -10,36 +10,77 @@ class RetinoSkinHeader extends Component{
     toggleStatus:false,
     fileInputRef:React.createRef(),
     imageDummyURL:camera,
-    url:'https://retinoskin.herokuapp.com/api/test'
+    imageURL:'',
+    imagePreviewURL:''
+  }
+  componentDidMount(){
+    console.log("did mount "+this.props);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("should update");
+    
+    return nextProps.toggleStatus!==this.state.toggleStatus;
+  }
+  componentDidUpdate(){
+    console.log("did update "+this.props);
+  }
+  componentWillUpdate(){
+    console.log("will update "+this.props);
+    
   }
   imageSelected=(e)=>{
-    this.setState({imageDummyURL:URL.createObjectURL(e.target.files[0])});
+    console.log("image selected");
+    e.preventDefault();
+    let file=e.target.files[0];
+   if(file.size>10*1024){
+     alert("large file size.");
+   }else if(!file.type.match('image/*')){
+     alert("image expected.");
+   }else{    
+    this.setState({
+          imageURL:file,
+          imagePreviewURL:URL.createObjectURL(e.target.files[0])          
+        });
+      }
   }
   imageClickedHandler=()=>{
+    console.log("image clicked");
+    
     this.state.fileInputRef.current.click()
   }
-  uploadHandler=()=>{
-     
-    const formData = new FormData();
-    formData.append('file',this.state.imageDummyURL);
-    const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
+  uploadHandler=(diseaseTitle)=>{
+    console.log("upload");
+    
+    let disease;
+    if (diseaseTitle==='Skin Cancer') {
+      disease='skincancer';
+    } else {
+      disease='retinopathy';
     }
-    
-    axios.post(this.state.url+'?option=retinopathy',formData,config).then((res)=>{
-      console.log(res);
-    });
-    
+   let url='https://retinoskin.herokuapp.com/api/test?option='+disease;
+ 
+    const formData = new FormData();
+    formData.append('image',this.state.imageURL,this.state.imageURL.name);
+   
+    axios.post(url,formData)
+      .then((res)=>{
+        console.log(res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
   }
-  showImageInput=()=>this.setState({toggleStatus:true});
-  hideImageInput=()=>this.setState({toggleStatus:false});
-  contentHandler=()=>{
-    if(!this.state.toggleStatus)this.showImageInput();
-    else this.hideImageInput();
+  showImageInput=()=>{
+    console.log("show image input");
+    
+    if (!this.state.toggleStatus) {
+      this.setState({toggleStatus:true});
+    }
+    else this.setState({toggleStatus:false});
   }
   render(){
+    console.log("render");
+    
     let imageInput='';
     if (this.state.toggleStatus) {
       imageInput=<ImageInput  
@@ -48,6 +89,8 @@ class RetinoSkinHeader extends Component{
                       uploadHandler={this.uploadHandler} 
                       imageDummyURL={this.state.imageDummyURL}
                       fileInputRef={this.state.fileInputRef}
+                      imagePreviewURL={this.state.imagePreviewURL}
+                      headerName={this.props.headerName}
                       />;
     }
     return(
@@ -55,7 +98,7 @@ class RetinoSkinHeader extends Component{
         <div className={classes.RetinoSkinHeader} > 
         <img src={this.props.imageURL} alt="icon" className={classes.image}></img>
         <p className={classes.headerName}>{this.props.headerName}</p>
-        <p className={classes.button} onClick={this.contentHandler}><Button value="Test"/></p>
+        <p className={classes.button} onClick={()=>{this.showImageInput()}} ><Button value="Test"/></p>
         </div>
         <div >
       {imageInput}
