@@ -19,7 +19,7 @@ class Modal extends Component {
       console.log("modal imagePreviewURL: "+this.state.imagePreviewURL);
       axios.post(this.props.uploadUrl,this.props.imageFormData)
       .then((res)=>{
-        // console.log(res.data.diseaseResult.output);
+        // console.log(res.data.diseaseResult);
         this.setState({
           modelOutput:Object.entries(res.data.diseaseResult.output),
           modelOutputStatus:true});
@@ -28,7 +28,7 @@ class Modal extends Component {
         this.setState({
             modelOutputStatus:true,
             errorStatus:true,
-          modelOutput:'error found'});
+          modelOutput:"FrontEnd POST(URL) Error"});
         console.log(err);
       }); 
     }
