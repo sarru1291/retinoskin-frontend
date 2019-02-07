@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './ImageInput.css';
 
 const ImageInput=(props)=>{
-    console.log(props.headerName);
+    console.log("imange input imagePreviewURL: "+props.imagePreviewURL);
 let imagePreview;
     if(props.imagePreviewURL===''){
         imagePreview=<img src={props.imageDummyURL} onClick={()=>{props.imageClicked()}} alt="capture"></img>;

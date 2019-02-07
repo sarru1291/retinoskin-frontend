@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './ImageOutput.css';
 
 const ImageOutput=(props)=>(
-  <div>
-    <p>image output</p>
+  <div className={classes.ImageOutput}>
+    <h1>{props.output}</h1>
   </div>
 );
 

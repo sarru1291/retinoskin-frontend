@@ -1,0 +1,10 @@
+.ImageOutput{
+  text-align: center;
+  padding: 10px;
+  color: black;
+  font-family: paprikaRegular;
+  font-size: 20px;
+  width: 778px;
+  border-top: 0.3px solid #1d272e;
+  border-bottom: 0.3px solid #1d272e;
+}

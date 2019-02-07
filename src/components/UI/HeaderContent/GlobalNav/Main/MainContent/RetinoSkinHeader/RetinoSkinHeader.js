@@ -2,8 +2,8 @@ import React,{Component} from 'react';
 import classes from './RetinoSkinHeader.css';
 import ImageInput from '../../../../../../ImageInput/ImageInput';
 import Button from '../../../../../../Buttons/Button';
-import axios from 'axios';
 import camera from '../../../../../../../assets/photos/camera.png';
+import Modal from '../../../../../../Modal/Modal';
 
 class RetinoSkinHeader extends Component{
   state={
@@ -11,7 +11,10 @@ class RetinoSkinHeader extends Component{
     fileInputRef:React.createRef(),
     imageDummyURL:camera,
     imageURL:'',
-    imagePreviewURL:''
+    imagePreviewURL:'',
+    imageFormData:'',
+    uploadUrl:'',
+    modalVisible:false
   }
   componentDidMount(){
     console.log("did mount "+this.props);
@@ -32,7 +35,7 @@ class RetinoSkinHeader extends Component{
     console.log("image selected");
     e.preventDefault();
     let file=e.target.files[0];
-   if(file.size>10*1024){
+   if(file.size>10*1024*1024){
      alert("large file size.");
    }else if(!file.type.match('image/*')){
      alert("image expected.");
@@ -41,6 +44,7 @@ class RetinoSkinHeader extends Component{
           imageURL:file,
           imagePreviewURL:URL.createObjectURL(e.target.files[0])          
         });
+        
       }
   }
   imageClickedHandler=()=>{
@@ -58,17 +62,18 @@ class RetinoSkinHeader extends Component{
       disease='retinopathy';
     }
    let url='https://retinoskin.herokuapp.com/api/test?option='+disease;
- 
-    const formData = new FormData();
-    formData.append('image',this.state.imageURL,this.state.imageURL.name);
-   
-    axios.post(url,formData)
-      .then((res)=>{
-        console.log(res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      });
+    
+   if (this.state.imageURL==='') {
+     alert('Please select image.');
+   } else {
+          const formData = new FormData();
+          formData.append('image',this.state.imageURL,this.state.imageURL.name);
+        
+         this.setState({
+              imageFormData:formData,
+              uploadUrl:url,
+              modalVisible:true});
+   }
   }
   showImageInput=()=>{
     console.log("show image input");
@@ -78,10 +83,17 @@ class RetinoSkinHeader extends Component{
     }
     else this.setState({toggleStatus:false});
   }
+  showModal=()=>{
+      this.setState({modalVisible:true});
+  }
+  closeModal=()=>{
+    this.setState({modalVisible:false});
+    // alert('modal close');
+  }
   render(){
     console.log("render");
     
-    let imageInput='';
+    let imageInput;
     if (this.state.toggleStatus) {
       imageInput=<ImageInput  
                       imageSelected={this.imageSelected} 
@@ -93,8 +105,20 @@ class RetinoSkinHeader extends Component{
                       headerName={this.props.headerName}
                       />;
     }
+    let modal;
+    if (this.state.modalVisible) {
+      modal=<Modal 
+                modalVisible={this.state.modalVisible} 
+                uploadUrl={this.state.uploadUrl}
+                imageFormData={this.state.imageFormData}
+                imagePreviewURL={this.state.imagePreviewURL}
+                closeModal={()=>this.closeModal()}
+                
+      />
+    }
     return(
       <div>
+        {modal}
         <div className={classes.RetinoSkinHeader} > 
         <img src={this.props.imageURL} alt="icon" className={classes.image}></img>
         <p className={classes.headerName}>{this.props.headerName}</p>
