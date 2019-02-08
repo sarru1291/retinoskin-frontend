@@ -4,13 +4,19 @@ import ModalBody from './ModalBody/ModalBody';
 import axios from 'axios';
 import Spinner from './../Spinner/Spinner';
 import ImageOutput from '../ImageOutput/ImageOutput';
-
+import Offline from '../Offline/Offline';
 class Modal extends Component {
   state={
     modelOutput:{},
     modelOutputStatus:false,
     imagePreviewURL:'',
-    errorStatus:false
+    errorStatus:false,
+    imageUploadingStatus:true,
+    imageUploadingText:'Image uploading...',
+    imageProcesssingStatus:false,
+    modelProcessUrl:'http://localhost:8086/api/model',
+    imageUploadedUrl:'',
+    imageUploadedOption:''
   }
     componentDidMount(){
       console.log("did mount...");
@@ -18,17 +24,22 @@ class Modal extends Component {
 
       console.log("modal imagePreviewURL: "+this.state.imagePreviewURL);
       axios.post(this.props.uploadUrl,this.props.imageFormData)
-      .then((res)=>{
-        // console.log(res.data.diseaseResult);
-        this.setState({
-          modelOutput:Object.entries(res.data.diseaseResult.output),
-          modelOutputStatus:true});
+      .then((res)=>{ 
+        console.log(res);
+        
+        if(res.data.output.imageUploadedStatus==='Image Uploaded'){
+          this.setState({imageUploadingStatus:false,
+                          imageProcesssingStatus:true,
+                          imageUploadingText:'Image processing...',
+                        imageUploadedUrl:res.data.output.imageUploadedUrl,
+                        imageUploadedOption:res.data.output.imageUploadedOption});
+        }
       })
       .catch((err)=>{
         this.setState({
             modelOutputStatus:true,
             errorStatus:true,
-          modelOutput:"FrontEnd POST(URL) Error"});
+          modelOutput:"FrontEnd POST(URL) Error(image uploading)"});
         console.log(err);
       }); 
     }
@@ -36,27 +47,54 @@ class Modal extends Component {
     componentWillUpdate(nextProps, nextState) {
         console.log('[Modal] WillUpdate');
     }
-    // shouldComponentUpdate(nextProps,nextState){
-    //   return this.nextProps.modalVisible!==this.props.modalVisible;
-    // }
+
+modelProcess(url,option){
+ const  modelUrl=this.state.modelProcessUrl+'?option='+option+'&url='+url;
+  axios.get(modelUrl)
+    .then(res=>{
+  // console.log(response);
+    this.setState({
+          modelOutput:Object.keys(res.data.diseaseResult.output)+`\n(Accuracy=`+Object.values(res.data.diseaseResult.output)+')',
+          modelOutputStatus:true,
+          imageProcesssingStatus:false,
+          imageUploadingText:'',
+        });
+    })
+    .catch(error=>{
+      this.setState({
+        modelOutputStatus:true,
+        errorStatus:true,
+        imageProcesssingStatus:false,
+        imageUploadingText:'',
+      modelOutput:"Model: heroku Internal Server Error."});
+    console.log(error);
+        });
+}      
+
     render() {
       let modelOutput;
       let output;
-     if(!this.state.modelOutputStatus){
+      
+     if(this.state.imageUploadingStatus&!this.state.imageProcesssingStatus&!this.state.modelOutputStatus){
       output=<Spinner/>;
-      modelOutput= <ModalBody modelOutput={output} imagePreviewURL={this.props.imagePreviewURL}/>;
-     }else{
+      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
+     }else if(!this.state.imageUploadingStatus&this.state.imageProcesssingStatus&!this.state.modelOutputStatus){
+      output=<Spinner/>;
+      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
+      this.modelProcess(this.state.imageUploadedUrl,this.state.imageUploadedOption)
+      // console.log(this.state.imageUploadedUrl+"  "+this.state.imageUploadedOption);
+    }else{
       output=<ImageOutput output={this.state.modelOutput}/> 
-      modelOutput= <ModalBody modelOutput={output} imagePreviewURL={this.props.imagePreviewURL}/>;
-        // Object.entries(modelOutput).forEach(([key,value]) => {
-        //   out[key]=value;
-        // });
-        // for (let index = 0; index < Object.keys(out).length; index++) {
-        //     console.log(Object.keys(out)[index]+" = "+Object.values(out)[index]);
-        // }
+      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
+      
+     }
+       
+     if (!navigator.onLine) {
+       var opt= <Offline/>;
      }
         return (
           <div className = {classes.Modal} onClick={()=>{this.props.closeModal()}}>
+          {opt}
             {modelOutput}
           </div>
            

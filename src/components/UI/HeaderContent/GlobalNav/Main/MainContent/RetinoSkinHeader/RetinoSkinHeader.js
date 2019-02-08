@@ -49,11 +49,10 @@ class RetinoSkinHeader extends Component{
   }
   imageClickedHandler=()=>{
     console.log("image clicked");
-    
     this.state.fileInputRef.current.click()
   }
   uploadHandler=(diseaseTitle)=>{
-    console.log("upload");
+    console.log("Uploading Image...");
     
     let disease;
     if (diseaseTitle==='Skin Cancer') {
@@ -61,7 +60,9 @@ class RetinoSkinHeader extends Component{
     } else {
       disease='retinopathy';
     }
-   let url='https://retinoskin.herokuapp.com/api/test?option='+disease;
+  //  let url='http://localhost:8086/api/test?option='+disease;
+
+   let url='http://localhost:8086/api/uploadImage?option='+disease;
     
    if (this.state.imageURL==='') {
      alert('Please select image.');

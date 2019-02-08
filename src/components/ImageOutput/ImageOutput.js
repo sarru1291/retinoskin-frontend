@@ -3,7 +3,8 @@ import classes from './ImageOutput.css';
 
 const ImageOutput=(props)=>(
   <div className={classes.ImageOutput}>
-    <h1>{props.output}</h1>
+    <p>{props.output}</p>
+    
   </div>
 );
 

@@ -5,6 +5,7 @@ const ModalBody = (props) => {
     <div className={classes.ModalBody} >
           <img src={props.imagePreviewURL} alt="imagePreview"/>
           <p>{props.modelOutput}</p>
+          <p>{props.statusText}</p>
     </div>
   );
 };

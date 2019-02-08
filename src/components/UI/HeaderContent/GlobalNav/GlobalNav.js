@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 class GlobalNav extends Component{
   
   render(){
-
+  
     return (
       <div className={classes.GlobalNav}>
         <ul>
@@ -26,7 +26,7 @@ class GlobalNav extends Component{
                   activeStyle={{
                     backgroundColor: "#1d272e",
                     color: "white"
-                  }}>Disease</NavLink></li>
+                  }}>Documentation</NavLink></li>
           <li><NavLink 
                   to="/aboutus"
                   activeClassName="my-active"

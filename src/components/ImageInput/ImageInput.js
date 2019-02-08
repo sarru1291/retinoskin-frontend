@@ -27,7 +27,10 @@ let imagePreview;
                 value="Check"  
                 className={classes.submitButton}/>
             </form> */}
-                <button className={classes.submitButton} onClick={()=>{props.uploadHandler(props.headerName)}}>Check</button>
+                <button 
+                    className={classes.submitButton} 
+                    onClick={()=>{props.uploadHandler(props.headerName)}}
+                    >Check</button>
             </div>
 )};
 
