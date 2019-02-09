@@ -1,25 +1,27 @@
 .SplashScreen{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0 0 160px 0;
   background-color: #1eb3aa;
-
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.splashText{
+  display: block;
+  text-align: center;
+  font-family: arial;
+  color: white;
+  font-size: 70px;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 .SplashScreen img{
+  height: 400px;
   width: 400px;
-  height: 300px;
-  border-radius: 50%;
-  margin: 170px 0 0 470px;
-  border: 2px solid white;
 }
-
-.SplashScreen span{
-  color: black;
-  font-size: 40px;
-  /* margin: 150px 0 0 450px; */
-  position: absolute;
-  top: 50px;
-  left: 430px;
-
+.Images{
+  display: flex;
+  padding-bottom: 53px;
+}
+.Image{
+  padding:0 50px 0 250px;
 }

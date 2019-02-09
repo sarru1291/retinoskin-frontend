@@ -1,0 +1,25 @@
+.DoctorDetails{
+  border: 1px solid black;
+  padding: 10px;
+  height: 230px;
+  width: 350px;
+  margin-bottom: 10px;
+}
+.submitButton{
+  height: 46px;
+  width: 100%;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #1d272e;
+  color:#dbf3f1;
+  border: none;
+  font-family: paprikaRegular;
+}
+.submitButton:hover{
+  background-color: #dbf3f1;
+  color: #1d272e;
+}
+.submitButton:active{
+  background-color: #1d272e;
+  color:#dbf3f1;
+}

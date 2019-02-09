@@ -14,7 +14,8 @@ class RetinoSkinHeader extends Component{
     imagePreviewURL:'',
     imageFormData:'',
     uploadUrl:'',
-    modalVisible:false
+    modalVisible:false,
+    diseaseTitle:''
   }
   componentDidMount(){
     console.log("did mount "+this.props);
@@ -73,7 +74,8 @@ class RetinoSkinHeader extends Component{
          this.setState({
               imageFormData:formData,
               uploadUrl:url,
-              modalVisible:true});
+              modalVisible:true,
+              diseaseTitle:disease});
    }
   }
   showImageInput=()=>{
@@ -114,6 +116,7 @@ class RetinoSkinHeader extends Component{
                 imageFormData={this.state.imageFormData}
                 imagePreviewURL={this.state.imagePreviewURL}
                 closeModal={()=>this.closeModal()}
+                diseaseTitle={this.state.diseaseTitle}
                 
       />
     }

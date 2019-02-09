@@ -3,7 +3,8 @@ import Header from '../../containers/Header/Header';
 import Footer from '../../containers/Footer/Footer';
 import Offline from '../../components/Offline/Offline';
 import SplashScreen from '../../components/SplashScreen/SplashScreen';
-import SplashImage from '../../assets/photos/splashimage.jpeg';
+import SplashImage1 from '../../assets/photos/splashimage1.jpg';
+import SplashImage2 from '../../assets/photos/splashimage2.jpeg';
 class Layout extends Component {
  state={
    splashScreen:true,
@@ -19,12 +20,13 @@ class Layout extends Component {
       {this.setState({splashScreen:false})}
     }, 3000);
     if (this.state.splashScreen) {
-      opt=<SplashScreen splashImage={SplashImage} splashText={this.state.splashText}/>
+      opt=<SplashScreen splashImage1={SplashImage1} splashImage2={SplashImage2} splashText={this.state.splashText}/>
     }else{
         opt=<div><Header/>{this.props.children}<Footer/></div>;
     }
     return (
       <div>
+        
         {opt}
       </div>
     );

@@ -19,14 +19,20 @@ class GlobalNav extends Component{
                   }}>Home</NavLink></li>
           <li><NavLink 
                   to={{
-                        pathname:'/disease',
-                        search:'?disease=both'
+                        pathname:'/disease'
                       }}
                   activeClassName="my-active"
                   activeStyle={{
                     backgroundColor: "#1d272e",
                     color: "white"
-                  }}>Documentation</NavLink></li>
+                  }}>Prevention and Causes</NavLink></li>
+          <li><NavLink 
+                  to="/doctors"
+                  activeClassName="my-active"
+                  activeStyle={{
+                    backgroundColor: "#1d272e",
+                    color: "white"
+                  }}>Doctors</NavLink></li>        
           <li><NavLink 
                   to="/aboutus"
                   activeClassName="my-active"

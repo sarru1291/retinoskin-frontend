@@ -1,0 +1,30 @@
+.Doctors{
+/* display:flex; */
+padding: 0;
+margin: 0;
+}
+.retinopathy{
+width: auto;
+display: inline-block;
+padding:0 180px 0 120px;
+/* border: 1px solid red; */
+}
+.skincancer{
+  display: inline-block;
+  width: auto;
+  padding:0 180px 0 120px;
+
+/* border: 1px solid red; */
+}
+.locationButton{
+  height: 70px;
+  width:100%;
+  display: inline-block;
+}
+.locationOutput{
+  height: 40px;
+  width:100%;
+  text-align: center;
+  /* background-color: red; */
+  display: block;
+}

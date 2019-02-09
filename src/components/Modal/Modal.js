@@ -5,6 +5,7 @@ import axios from 'axios';
 import Spinner from './../Spinner/Spinner';
 import ImageOutput from '../ImageOutput/ImageOutput';
 import Offline from '../Offline/Offline';
+import {NavLink,Link} from 'react-router-dom';
 class Modal extends Component {
   state={
     modelOutput:{},
@@ -59,6 +60,10 @@ modelProcess(url,option){
           imageProcesssingStatus:false,
           imageUploadingText:'',
         });
+
+        // modelOuput  imageUploadedUrl
+
+
     })
     .catch(error=>{
       this.setState({
@@ -74,19 +79,57 @@ modelProcess(url,option){
     render() {
       let modelOutput;
       let output;
-      
+      let linkPC;
+      let save;
      if(this.state.imageUploadingStatus&!this.state.imageProcesssingStatus&!this.state.modelOutputStatus){
       output=<Spinner/>;
-      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
+      modelOutput= <ModalBody 
+                      modelOutput={output} 
+                      statusText={this.state.imageUploadingText} 
+                      imagePreviewURL={this.props.imagePreviewURL}/>;
      }else if(!this.state.imageUploadingStatus&this.state.imageProcesssingStatus&!this.state.modelOutputStatus){
       output=<Spinner/>;
-      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
+      modelOutput= <ModalBody 
+                        modelOutput={output} 
+                        statusText={this.state.imageUploadingText} 
+                        imagePreviewURL={this.props.imagePreviewURL}/>;
       this.modelProcess(this.state.imageUploadedUrl,this.state.imageUploadedOption)
       // console.log(this.state.imageUploadedUrl+"  "+this.state.imageUploadedOption);
     }else{
       output=<ImageOutput output={this.state.modelOutput}/> 
-      modelOutput= <ModalBody modelOutput={output} statusText={this.state.imageUploadingText} imagePreviewURL={this.props.imagePreviewURL}/>;
-      
+      modelOutput= <ModalBody 
+                      modelOutput={output} 
+                      statusText={this.state.imageUploadingText} 
+                      imagePreviewURL={this.props.imagePreviewURL}
+                      // linkPC={linkPC}
+                      />;
+      linkPC=<Link to="/disease" 
+                    style={{textDecoration:"none",
+                            color:"white",
+                            backgroundColor:"#1eb3aa",
+                            padding:"10px",
+                            textAlign:"center",
+                            position:"absolute",
+                            top:"500px",
+                            left:"550px"}}
+                    >Prevention and Causes</Link>
+      save=<NavLink 
+                to={{
+                  pathname:'/save',
+                  params:{
+                    'modelOutput':this.state.modelOutput,
+                    'imageUploadedUrl':this.state.imageUploadedUrl
+                  }
+                }}
+                style={{textDecoration:"none",
+                        color:"white",
+                        backgroundColor:"#1eb3aa",
+                        padding:"10px",
+                      textAlign:"center",
+                      position:"absolute",
+                      top:"500px",
+                      left:"800px"}}
+                >Save</NavLink>
      }
        
      if (!navigator.onLine) {
@@ -96,6 +139,7 @@ modelProcess(url,option){
           <div className = {classes.Modal} onClick={()=>{this.props.closeModal()}}>
           {opt}
             {modelOutput}
+           {linkPC}  {save}
           </div>
            
          );
