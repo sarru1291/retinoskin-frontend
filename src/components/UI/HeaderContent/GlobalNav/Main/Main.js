@@ -10,9 +10,7 @@ import TextFileReader from "../../../../TextFileReader/TextFileReader";
 class Main extends Component{
   state={
     diseaseTitle:['Skin Cancer','Diabetic Retinopathy'],
-    formSubmitted:false,
-    content:['slfjaslkfjalsfsalk;fjaklsfjaffasfasdfasfdsfa',
-              'asfljaflksjadfasfafsafdasdfafasfasdfasdfaeeeeee']
+    formSubmitted:false
   }
   
   render(){
@@ -30,7 +28,6 @@ class Main extends Component{
           headerName={this.state.diseaseTitle[1]}
           content={<TextFileReader txt={retinopathyText}/>}
           />
-      {/* <Spinner/> */}
       </div>
     );
   }

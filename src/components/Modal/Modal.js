@@ -15,7 +15,7 @@ class Modal extends Component {
     imageUploadingStatus:true,
     imageUploadingText:'Image uploading...',
     imageProcesssingStatus:false,
-    modelProcessUrl:'http://localhost:8086/api/model',
+    modelProcessUrl:'http://retinoskin.heroku.com/api/model',
     imageUploadedUrl:'',
     imageUploadedOption:''
   }
@@ -60,10 +60,6 @@ modelProcess(url,option){
           imageProcesssingStatus:false,
           imageUploadingText:'',
         });
-
-        // modelOuput  imageUploadedUrl
-
-
     })
     .catch(error=>{
       this.setState({

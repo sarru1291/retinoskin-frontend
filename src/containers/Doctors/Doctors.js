@@ -25,10 +25,6 @@ class Doctors extends Component {
       
     } 
   }
-  showPosition=(position)=> {
-   console.log(position.coords.latitude +" "+ position.coords.longitude );
-    
-  }
   getCurrentLocation=()=>{
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -41,8 +37,7 @@ class Doctors extends Component {
         
         axios.get(reverseGeocodeUrl)
         .then((result)=>{
-          console.log(result.data.results[1].formatted_address);
-          
+          console.log(result.data.results[1].formatted_address);       
           this.setState({locationOutput:result.data.results[1].formatted_address});
         })
         .catch((err)=>{
@@ -69,12 +64,13 @@ class Doctors extends Component {
       let axiosConfig = {
         headers: {
             "Content-Type": 'application/json',
+            //already registered user x-auth
             "x-auth":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzVlMjJmNzljMzE2OTQwNTQxZGJmNjIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQ5NjczMjA4fQ.5FiZqpREzseAvFvVCacXDsvuTWB2Rumc_1AbCbeJOjk"
         }
       };
       // console.log(email);
       
-      axios.post('http://localhost:8086/users/message',{
+      axios.post('http://retinoskin.heroku.com/users/message',{
         'modelOutput':modelOutput,
         'imageUploadedUrl':imageUploadedUrl,
         'to':{email}
