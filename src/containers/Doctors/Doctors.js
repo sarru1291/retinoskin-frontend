@@ -103,13 +103,13 @@ class Doctors extends Component {
         <h1>Diabetic Specialist</h1>
         <DoctorDetails
               name="Sarvottam kumar"
-              email="sarru1291@gmail.com"
+              email="sauravansh17@gmail.com"
               address="laxmi nagar"
               phoneno="9958938566"
               sendMessageHandler={this.sendMessageHandler}/>
         <DoctorDetails
               name="Dr. Arun Sangal"
-              email="arunsangal@gmail.com"
+              email="sarru1292@gmail.com"
               address="laxmi nagar"
               phoneno="9858938567"
               sendMessageHandler={this.sendMessageHandler}/>
@@ -119,13 +119,13 @@ class Doctors extends Component {
         <h1>skin Cancer Specialist</h1>
         <DoctorDetails
               name="Dr. Aarti Choudhry"
-              email="aartichdhry@gmail.com"
+              email="sarru1289@gmail.com"
               address="laxmi nagar"
               phoneno="9958938568"
               sendMessageHandler={this.sendMessageHandler}/>
         <DoctorDetails
               name="Dr. Rajesh Khanna"
-              email="khanna@gmail.com"
+              email="sarru1288@gmail.com"
               address="laxmi nagar"
               phoneno="9958938569"
               sendMessageHandler={this.sendMessageHandler}/>
