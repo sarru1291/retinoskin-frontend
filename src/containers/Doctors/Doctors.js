@@ -65,7 +65,7 @@ class Doctors extends Component {
         headers: {
             "Content-Type": 'application/json',
             //already registered user x-auth
-            "x-auth":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzVlMjJmNzljMzE2OTQwNTQxZGJmNjIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQ5NjczMjA4fQ.5FiZqpREzseAvFvVCacXDsvuTWB2Rumc_1AbCbeJOjk"
+            "x-auth":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzVmMDc0YWVjMzEzZjAwMTc3YjQ3OTMiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQ5NzMxNjU5fQ.O9lBBxJQrCBYAW_gLsfb1AMD1x1M2IB_0wm-4t4Eq4k"
         }
       };
       // console.log(email);
