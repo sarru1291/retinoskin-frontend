@@ -61,7 +61,9 @@ class RetinoSkinHeader extends Component{
     } else {
       disease='retinopathy';
     }
-   let url='http://retinoskin.heroku.com/api/uploadImage?option='+disease;
+   let url='https://retinoskin.herokuapp.com/api/uploadImage?option='+disease;
+
+  //  let url='http://localhost:8086/api/uploadImage?option='+disease;
     
    if (this.state.imageURL==='') {
      alert('Please select image.');

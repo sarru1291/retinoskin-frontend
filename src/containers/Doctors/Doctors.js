@@ -61,20 +61,22 @@ class Doctors extends Component {
      let modelOutput=this.props.location.params.modelOutput;
      let imageUploadedUrl=this.props.location.params.imageUploadedUrl;
       // console.log(this.props.location.params);
-      let axiosConfig = {
-        headers: {
-            "Content-Type": 'application/json',
-            //already registered user x-auth
-            "x-auth":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzVmMDc0YWVjMzEzZjAwMTc3YjQ3OTMiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQ5NzMxNjU5fQ.O9lBBxJQrCBYAW_gLsfb1AMD1x1M2IB_0wm-4t4Eq4k"
-        }
-      };
+      // let axiosConfig = {
+      //   headers: {
+      //       "Content-Type": 'application/json',
+      //       //already registered user x-auth
+      //       "x-auth":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzVmMDc0YWVjMzEzZjAwMTc3YjQ3OTMiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTQ5NzMxNjU5fQ.O9lBBxJQrCBYAW_gLsfb1AMD1x1M2IB_0wm-4t4Eq4k"
+      //   }
+      // };
       // console.log(email);
       
-      axios.post('http://retinoskin.heroku.com/users/message',{
+      axios.post(' https://retinoskin.herokuapp.com/users/message',{
+      // axios.post('http://localhost:8086/users/message',{
         'modelOutput':modelOutput,
         'imageUploadedUrl':imageUploadedUrl,
         'to':{email}
-      },axiosConfig)
+      // },axiosConfig)
+    })
       .then((res)=>{
         alert(res.data);
         // console.log(res);
